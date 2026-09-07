@@ -1,1 +1,15 @@
 /* Your SCSS here. */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons svg {
+    width: 35px;
+    height: 35px;
+    fill: black;
+}
+
+.social-icons svg:hover {
+    fill: gray;
+}

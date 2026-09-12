@@ -37,6 +37,24 @@ a {
     text-decoration: none;
 }
 
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 20;
+    background: transparent;
+
+    &__bar {
+        height: 100%;
+        width: 0%;
+        width: calc(var(--scroll, 0) * 1%);
+        background: linear-gradient(90deg, $color-accent, $color-highlight);
+        transition: width 0.1s linear;
+    }
+}
+
 .social-icons {
     display: flex;
     gap: 1.75rem;
@@ -55,7 +73,7 @@ a {
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

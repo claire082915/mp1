@@ -9,6 +9,8 @@ $color-accent-dark: #234F38;
 $color-accent-tint: #E3ECE6;
 $color-highlight: #D9A438;
 $color-overlay: rgba(20, 24, 22, 0.55);
+$color-footer-bg: #14211B;
+$color-footer-text: #CBD5CE;
 
 $navbar-height: 92px;
 $navbar-height-scrolled: 58px;
@@ -34,6 +36,15 @@ body {
     background: $color-paper;
     color: $color-ink;
     line-height: 1.6;
+}
+
+h1 {
+    font-family: $font-display;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.55rem;
+    margin: 0;
+    color: $color-ink;
 }
 
 h2 {
@@ -83,21 +94,6 @@ main section {
     }
 }
 
-.social-icons {
-    display: flex;
-    gap: 1.75rem;
-}
-
-.social-icons svg {
-    width: 35px;
-    height: 35px;
-    fill: $color-ink;
-}
-
-.social-icons svg:hover {
-    fill: $color-ink-soft;
-}
-
 .navbar {
     position: sticky;
     top: 0;
@@ -133,10 +129,204 @@ main section {
 }
 
 .navbar a {
+    display: inline-block;
+    color: $color-ink-soft;
     text-decoration: none;
     color: $color-ink-soft;
     font-size: 0.92rem;
     font-weight: 500;
     position: relative;
-    padding-bottom: 2px;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+
+    &:hover, &:focus-visible {
+        color: $color-accent;
+    }
+
+    &.is-active {
+        color: #fff;
+        background: $color-accent;
+    }
+}
+
+#about-me {
+    position: relative;
+    overflow: hidden;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    &__intro {
+        animation: fadeInUp 0.6s ease both;
+        max-width: 62ch;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 5vw, 2.75rem);
+    }
+
+    p {
+        color: $color-ink-soft;
+        font-size: 1.05rem;
+    }
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+
+.focus-item {
+    padding: 1.75rem 1.5rem;
+    i {
+        display: inline-block;
+        font-size: 1.5rem;
+        color: $color-accent;
+        margin-bottom: 0.75rem;
+        animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    h3 {
+        font-family: $font-display;
+        font-size: 1.1rem;
+        margin: 0 0 0.5rem;
+    }
+
+    p {
+        margin: 0;
+        color: $color-ink-soft;
+        font-size: 0.92rem;
+    }
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+
+    li {
+        font-family: $font-mono;
+        font-size: 0.85rem;
+        color: $color-accent-dark;
+        background: $color-accent-tint;
+        border: 1px solid $color-line;
+        border-radius: 3px;
+        padding: 0.4rem 0.75rem;
+        &:hover {transform: translateY(-1px);}
+    }
+}
+
+.quote-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+
+    .container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    blockquote {
+        margin: 0 auto;
+        max-width: 52ch;
+        font-family: $font-display;
+        font-style: italic;
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+#contact form {
+    max-width: 480px;
+    margin: 0 atuo;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $color-ink-soft;
+    }
+
+    input {
+        font-family: $font-body;
+        font-size: 1rem;
+        color: $color-ink;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $color-line;
+        padding: 0.5rem 0.1rem;
+
+        &:focus {
+            outline: none;
+            border-bottom-color: $color-accent;
+        }
+    }
+}
+
+#contact button {
+    align-self: flex-start;
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    background: $color-accent;
+    border: none;
+    border-radius: 3px;
+    padding: 0.75rem 1.6rem;
+    cursor: pointer;
+
+    &:hover, &:focus-visible {background: $color-accent-dark;}
+}
+
+footer {
+    @include stripe($color-footer-bg);
+    border-bottom: none;
+}
+
+.social-icons {
+    
+    a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: $color-footer-text;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.66);
+
+        &:hover, &:focus-visible {
+            color: #fff;
+            background: $color-accent;
+        }
+    }
 }

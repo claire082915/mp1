@@ -105,6 +105,13 @@
                             <div class="carousel__slide">PagePal screenshot</div>
                             <div class="carousel__slide">Shelp screenshot</div>
                         </div>
+                        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous slide">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next slide">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <div class="carousel__dots"></div>
                     </div>
                 </div>
 
@@ -114,7 +121,10 @@
                 <div class="container">
                     <h2>Demo Video</h2>
                     <div id="demo-video__wrapper">
-
+                        <video controls poster="assets/pagepal_image.png">
+                            <source src="assets/pagepal_demo.mp4" type="video/mp4">
+                            Your browser doesn't support embedded video. 
+                        </video>
                     </div>
                 </div>
 
@@ -145,7 +155,7 @@
                 </div>
             </section>
 
-            <section id="contact">
+            <section id="contact" class="stripe--white">
                 <div class="container">
                     <h2>Contact</h2>
                     <form action="#" method="post">

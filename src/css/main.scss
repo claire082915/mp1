@@ -19,6 +19,10 @@ $font-display: 'Newsreader', Georgia, serif;
 $font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 $font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
 
+$max-width: 1040ox;
+$gutter: clamp(1.25rem, 4vw, 3rem);
+$radius: 4px;
+
 @mixin stripe($bg: $color-paper) {
     width: 100%;
     background: $bg;
@@ -208,6 +212,18 @@ main section {
     }
 }
 
+#demo-video__wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+#demo-video video {
+    width: 100%;
+    border-radius: $radius;
+    box-shadow: 0 8px 24px rgba($color-ink, 0.08);
+    display: block;
+}
+
 .skills-list {
     list-style: none;
     display: flex;
@@ -231,6 +247,10 @@ main section {
 
 .quote-banner {
     position: relative;
+    background-size: cover;
+    background-image: 
+        linear-gradient(rgba($color-ink, 0.72), rgba($color-ink, 0.72)), 
+        url('../assets/quote_background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -312,7 +332,7 @@ footer {
 }
 
 .social-icons {
-    
+
     a {
         display: inline-flex;
         align-items: center;

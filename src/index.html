@@ -81,19 +81,31 @@
                     <div class="project-grid">
                         <article class="project-card">
                             <h3>PromoXimity</h3>
-                            <p>Short description</p>
+                            <p>A real-time discount discovery engine that surfaces nearby restaurant offers using geofencing 
+                                and makes redeeming them seamless through integrated Stripe checkout. At its heart, the product 
+                                helps users instantly find deals around them and complete their purchase in just a few taps.
+                            </p>
                             <button class="project-card__details-btn" data-project="promoximity" type="button">View details</button>
                         </article>
 
                         <article class="project-card">
                             <h3>PagePal</h3>
-                            <p>Short description</p>
+                            <p>PagePal is an AI-powered reading assistant designed to streamline
+                                 how students read articles and research papers. Integrated directly 
+                                 into the workspace, it eliminates the need to constantly switch between 
+                                 reading materials and external search engines or chat boxes.
+                            </p>
                             <button class="project-card__details-btn" data-project="pagepal" type="button">View details</button>
                         </article>
 
                         <article class="project-card">
                             <h3>Shelp</h3>
-                            <p>Short description</p>
+                            <p>Shelp is a smart virtual pantry management app designed to help users reduce 
+                                food waste and save money by allowing users to manually log food items alongside 
+                                their expiration dates, which are organized chronologically from nearest to latest expiry. 
+                                Near the expiration date, the user will receive a notification to their phone. The app also 
+                                leverages AI to suggest custom recipe ideas based on near-expiry ingredients selected by the user.
+                            </p>
                             <button class="project-card__details-btn" data-project="shelp" type="button">View details</button>
                         </article>
 
@@ -206,6 +218,16 @@
                 </div>
             </div>
         </footer>
+
+        <div class="modal-overlay"></div>
+        <div class="modal" role="dialog" aira-modal="true" aria-labelledby="model-title">
+            <button class="modal__close" type="button" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="modal__title" id="modal-title"></h3>
+            <p class="modal__body"></p>
+            <div class="modal__tags"></div>
+        </div>
     </body>
     
 </html>

@@ -109,3 +109,63 @@ class Carousel {
 }
  
 document.querySelectorAll('.carousel').forEach((el) => new Carousel(el));
+
+const modalOverlay = document.querySelector('.modal-overlay');
+const modal = document.querySelector('.modal');
+const modalTitle = modal?.querySelector('.modal__title');
+const modalBody = modal?.querySelector('.modal__body');
+const modalTags = modal?.querySelector('.modal__tags');
+ 
+const projectDetails = {
+  promoximity: {
+    title: 'PromoXimity',
+    body: 'short description',
+    tags: ['Python', 'SQLite/SQLAlchemy', 'FastAPI', 'Stripe'],
+  },
+  pagepal: {
+    title: 'PagePal',
+    body: 'short description',
+    tags: ['React', 'TypeScript', 'Python', 'AWS'],
+  },
+  shelp: {
+    title: 'Shelp',
+    body: 'Add a short write-up of the problem, your approach, and the outcome.',
+    tags: ['React', 'Node.js', 'Firebase'],
+  },
+};
+ 
+const openModal = (key) => {
+  const data = projectDetails[key];
+  if (!data || !modal || !modalOverlay) return;
+ 
+  modalTitle.textContent = data.title;
+  modalBody.textContent = data.body;
+  modalTags.innerHTML = '';
+  data.tags.forEach((tag) => {
+    const span = document.createElement('span');
+    span.textContent = tag;
+    modalTags.appendChild(span);
+  });
+ 
+  modal.classList.add('is-open');
+  modalOverlay.classList.add('is-open');
+  document.body.classList.add('modal-open');
+  modal.querySelector('.modal__close')?.focus();
+};
+ 
+const closeModal = () => {
+  modal?.classList.remove('is-open');
+  modalOverlay?.classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+};
+ 
+document.querySelectorAll('.project-card__details-btn').forEach((btn) => {
+  btn.addEventListener('click', () => openModal(btn.dataset.project));
+});
+ 
+modal?.querySelector('.modal__close')?.addEventListener('click', closeModal);
+modalOverlay?.addEventListener('click', closeModal);
+ 
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});

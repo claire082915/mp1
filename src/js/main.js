@@ -115,22 +115,34 @@ const modal = document.querySelector('.modal');
 const modalTitle = modal?.querySelector('.modal__title');
 const modalBody = modal?.querySelector('.modal__body');
 const modalTags = modal?.querySelector('.modal__tags');
- 
+const modalGithub = modal?.querySelector('.modal__github');
+const modalSlidesLink = modal?.querySelector('.modal__slides');
+const modalSlidesImg = modal?.querySelector('.modal__slides-img'); 
+
 const projectDetails = {
   promoximity: {
     title: 'PromoXimity',
-    body: 'short description',
+    body: 'A real-time discount discovery engine that surfaces nearby restaurant offers using geofencing and makes redeeming them seamless through integrated Stripe checkout. At its heart, the product helps users instantly find deals around them and complete their purchase in just a few taps.',
     tags: ['Python', 'SQLite/SQLAlchemy', 'FastAPI', 'Stripe'],
+    github: 'https://github.com/Divya-T1/HackIllinois', 
+    slidesUrl: 'https://docs.google.com/presentation/d/1gBn9ke9dWyppAyLc4BBZyejjtPeSN-2_Igxw9apv1Jw/edit?usp=sharing', 
+    slidesImage: 'assets/promoximity_slides.png'
   },
   pagepal: {
     title: 'PagePal',
-    body: 'short description',
+    body: 'PagePal is an AI-powered reading assistant designed to streamlinehow students read articles and research papers. Integrated directly into the workspace, it eliminates the need to constantly switch between reading materials and external search engines or chat boxes.',
     tags: ['React', 'TypeScript', 'Python', 'AWS'],
+    github: 'https://github.com/claire082915/page-pal/tree/main', 
+    slidesUrl: 'https://docs.google.com/presentation/d/1InxYY6YTYqkn8JMemrj1DcBeWZgOJ8mfH9NEk2szQJA/edit?usp=sharing', 
+    slidesImage: 'assets/pagepal_slides.png'
   },
   shelp: {
     title: 'Shelp',
-    body: 'Add a short write-up of the problem, your approach, and the outcome.',
+    body: 'Shelp is a smart virtual pantry management app designed to help users reduce food waste and save money by allowing users to manually log food items alongside their expiration dates, which are organized chronologically from nearest to latest expiry. Near the expiration date, the user will receive a notification to their phone. The app also leverages AI to suggest custom recipe ideas based on near-expiry ingredients selected by the user.',
     tags: ['React', 'Node.js', 'Firebase'],
+    github: 'https://github.com/CS222-UIUC/team-11-project', 
+    slidesUrl: 'https://docs.google.com/presentation/d/1VyeFV2rkmNIRTPmUT9FjyMC9GW16rmLI0BE0epYwxbU/edit?usp=sharing', 
+    slidesImage: 'assets/shelp_slides.png'
   },
 };
  
@@ -140,12 +152,21 @@ const openModal = (key) => {
  
   modalTitle.textContent = data.title;
   modalBody.textContent = data.body;
+
   modalTags.innerHTML = '';
   data.tags.forEach((tag) => {
     const span = document.createElement('span');
     span.textContent = tag;
     modalTags.appendChild(span);
   });
+
+  if (modalGithub) modalGithub.href = data.github;
+
+  if (modalSlidesLink && modalSlidesImg) {
+    modalSlidesLink.href = data.slidesUrl;
+    modalSlidesImg.src = data.slidesImage;
+    modalSlidesImg.alt = `${data.title} slide deck cover`;
+  }
  
   modal.classList.add('is-open');
   modalOverlay.classList.add('is-open');

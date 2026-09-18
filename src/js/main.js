@@ -3,9 +3,12 @@ console.log('Hello World!')
 
 const progressBar = document.querySelector('.scroll-indicator__bar');
 const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelectorAll('.navbar nav a');
+const navLinks = Array.from(document.querySelectorAll('.navbar nav a'));
 const sections = document.querySelectorAll('main > section');
-const NAVBAR_SCROLL_THRESHOLD = 40;
+const NAVBAR_SCROLL_THRESHOLD = 24;
+
+const indicatorSections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
 
 const updateScrollIndicator = () => {
   const scrollTop = window.scrollY;
@@ -21,6 +24,40 @@ const updateNavbar = () => {
   if (!navbar) return;
   navbar.classList.toggle('is-scrolled', window.scrollY > NAVBAR_SCROLL_THRESHOLD);
 };
+
+const updatePositionIndicator = () => {
+    if (!navbar || indicatorSections.length === 0) return;
+
+    const navHeight = navbar.getBoundingClientRect().height;
+    let currentLink = navLinks[0];
+
+    indicatorSections.forEach((section, i) => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top <= navHeight + 8) {
+            currentLink = navLinks[i];
+        }
+    });
+
+    const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    if (scrolledToBottom) {
+        currentLink = navLinks[navLinks.length - 1];
+    }
+
+    navLinks.forEach((link) => {
+        link.classList.toggle('is-active', link === currentLink);
+    });
+};
+
+let ticking = false;
+const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+        updateNavbar();
+        updatePositionIndicator();
+        ticking = false;
+    })
+}
 
 const updateActiveNavLink = () => {
   const scrollPosition = window.scrollY + (navbar?.offsetHeight || 0) + 10;
@@ -52,11 +89,14 @@ window.addEventListener('scroll', () => {
   updateScrollIndicator();
   updateNavbar();
   updateActiveNavLink();
+  onScroll();
 }, { passive: true });
+window.addEventListener('resize', updatePositionIndicator);
 
 updateScrollIndicator();
 updateNavbar();
 updateActiveNavLink();
+updatePositionIndicator();
 
 
 

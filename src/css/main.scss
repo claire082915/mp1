@@ -52,7 +52,7 @@ $radius: 4px;
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: $navbar-height + 12px;
+    scroll-padding-top: $navbar-height-scrolled;
 }
 
 body {
@@ -133,8 +133,10 @@ main section {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid $color-line;
     @include transition(height background padding, 0.25s, ease);
+    padding: 0px 25px;
 
     &.is-scrolled {
+        top: 7;
         height: $navbar-height-scrolled;
         background: rgba($color-paper, 0.97);
         box-shadow: 0 2px 10px rgba($color-ink, 0.05);

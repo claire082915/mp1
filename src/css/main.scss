@@ -217,7 +217,6 @@ main section {
 .navbar a {
     display: inline-block;
     color: $color-ink-soft;
-    // text-decoration: none;
     font-size: 0.92rem;
     font-weight: 500;
     position: relative;
@@ -763,6 +762,6 @@ body.modal-open{ overflow: hidden; }
 
         &.is-scrolled {height: auto; }
 
-        nav ul {gap: 0.5rem; font-size: 0.6rem;}
+        nav ul {gap: 0.5rem; font-size: 0.75rem;}
     }
 }
